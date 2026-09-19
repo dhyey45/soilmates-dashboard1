@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Soilmates — Secure Command Access</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body class="access-page">
+  <div class="mouse-glow"></div>
+  <div class="scanlines"></div>
+  <div class="ambient-noise" aria-hidden="true"></div>
+
+  <main class="access-shell">
+    <div class="access-orbit access-orbit-a"></div>
+    <div class="access-orbit access-orbit-b"></div>
+    <div class="access-particles"></div>
+
+    <section class="access-card" aria-labelledby="accessTitle">
+      <div class="access-icon-wrap">
+        <div class="access-icon">⌁</div>
+        <span class="access-pulse"></span>
+      </div>
+
+      <div class="access-kicker"><span></span> PRIVATE COMMAND CENTER</div>
+      <h1 id="accessTitle">Welcome back.</h1>
+      <p class="access-subtitle">Enter the Soilmates access key to continue to the rover dashboard.</p>
+
+      <form id="loginForm" class="access-form" novalidate>
+        <label for="password">ACCESS PASSWORD</label>
+        <div class="password-field">
+          <input id="password" name="password" type="password" autocomplete="current-password" placeholder="Enter access password" required autofocus>
+          <button type="button" id="togglePassword" class="eye-button" aria-label="Show password">◉</button>
+        </div>
+        <button id="loginButton" class="access-button" type="submit">
+          <span>UNLOCK COMMAND CENTER</span><b>↗</b>
+        </button>
+        <p id="loginError" class="login-error" role="alert"></p>
+      </form>
+
+      <div class="access-meta">
+        <span><i></i> ENCRYPTED SESSION</span>
+        <span>SOILMATES 4.0</span>
+      </div>
+    </section>
+
+    <a class="back-link" href="/">← Back to welcome</a>
+  </main>
+
+  <script src="access.js"></script>
+</body>
+</html>

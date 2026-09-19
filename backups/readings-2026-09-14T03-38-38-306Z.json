@@ -1,0 +1,14 @@
+[
+  {
+    "id": 1789355540897,
+    "rover_id": "ROVER-01",
+    "soil_moisture": 54,
+    "temperature": 37,
+    "humidity": 70,
+    "battery": 67,
+    "latitude": 22.3872,
+    "longitude": 73.0812,
+    "photo_url": null,
+    "created_at": "2026-09-14T03:12:20.897Z"
+  }
+]

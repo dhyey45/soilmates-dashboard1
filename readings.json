@@ -1,0 +1,54 @@
+[
+  {
+    "id": 1789355540897,
+    "rover_id": "ROVER-01",
+    "soil_moisture": 54,
+    "temperature": 37,
+    "humidity": 70,
+    "battery": 67,
+    "latitude": 22.3872,
+    "longitude": 73.0812,
+    "photo_url": null,
+    "created_at": "2026-09-14T03:12:20.897Z"
+  },
+  {
+    "id": 1789357118306,
+    "rover_id": "ROVER-01",
+    "soil_moisture": 66,
+    "temperature": 35,
+    "humidity": 76,
+    "battery": 63,
+    "latitude": 22.3873,
+    "longitude": 73.0813,
+    "photo_url": null,
+    "created_at": "2026-09-14T03:38:38.306Z"
+  },
+  {
+    "id": 1789449273713,
+    "rover_id": "ROVER-01",
+    "soil_moisture": 38,
+    "temperature": 35,
+    "humidity": 75,
+    "battery": 67,
+    "latitude": 22.3872,
+    "longitude": 73.0812,
+    "photo_url": null,
+    "created_at": "2026-09-15T05:14:33.713Z"
+  },
+  {
+    "id": 1789674321792,
+    "rover_id": "ROVER-01",
+    "soil_moisture": 17,
+    "speed": null,
+    "temperature": 13,
+    "humidity": 56,
+    "nitrogen": null,
+    "phosphorus": null,
+    "potassium": null,
+    "battery": 7,
+    "latitude": 22.1111,
+    "longitude": 73.888,
+    "photo_url": null,
+    "created_at": "2026-09-17T19:45:21.792Z"
+  }
+]

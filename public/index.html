@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Soilmates — Rover Intelligence</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body class="welcome-page">
+  <div class="mouse-glow"></div>
+  <div class="scanlines"></div>
+  <div class="ambient-noise" aria-hidden="true"></div>
+
+  <section id="introScreen" aria-label="Soilmates introduction">
+    <div class="intro-grid"></div>
+    <div class="intro-orbit orbit-a"></div>
+    <div class="intro-orbit orbit-b"></div>
+    <div class="intro-particles" aria-hidden="true"></div>
+    <div class="intro-content">
+      <div class="intro-kicker"><span class="pulse-dot"></span> ROVER INTELLIGENCE SYSTEM</div>
+      <h1 class="soilmates-title" aria-label="Soilmates">
+        <span>S</span><span>O</span><span>I</span><span>L</span><span>M</span><span>A</span><span>T</span><span>E</span><span>S</span>
+      </h1>
+      <p class="intro-subtitle">SMART AGRICULTURE • DIGITAL FIELD INTELLIGENCE</p>
+      <div class="intro-line"><span></span></div>
+      <div class="boot-status">
+        <span id="bootText">CALIBRATING SENSOR MATRIX</span>
+        <b id="bootPercent">0%</b>
+      </div>
+      <button id="dashboardButton" class="launch-button" disabled>
+        <span>ENTER COMMAND CENTER</span><b>↗</b>
+      </button>
+    </div>
+  </section>
+  <script src="welcome.js"></script>
+</body>
+</html>

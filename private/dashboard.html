@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Soilmates 3.0 — Rover Intelligence</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+</head>
+<body>
+  <div class="mouse-glow"></div>
+  <div class="scanlines"></div>
+  <div class="ambient-noise" aria-hidden="true"></div>
+
+  <section id="introScreen" aria-label="Soilmates introduction">
+    <div class="intro-grid"></div>
+    <div class="intro-orbit orbit-a"></div>
+    <div class="intro-orbit orbit-b"></div>
+    <div class="intro-particles" aria-hidden="true"></div>
+    <div class="intro-content">
+      <div class="intro-kicker"><span class="pulse-dot"></span> ROVER INTELLIGENCE SYSTEM</div>
+    
+      <h1 class="soilmates-title" aria-label="Soilmates">
+        <span>S</span><span>O</span><span>I</span><span>L</span><span>M</span><span>A</span><span>T</span><span>E</span><span>S</span>
+      </h1>
+      <p class="intro-subtitle">SMART AGRICULTURE • DIGITAL FIELD INTELLIGENCE</p>
+      <div class="intro-line"><span></span></div>
+      <div class="boot-status">
+        <span id="bootText">CALIBRATING SENSOR MATRIX</span>
+        <b id="bootPercent">0%</b>
+      </div>
+      <button id="dashboardButton" class="launch-button" disabled>
+        <span>ENTER COMMAND CENTER</span><b>↗</b>
+      </button>
+    </div>
+  </section>
+
+  <header>
+    <div class="brand-wrap">
+      <div class="brand">SOILMATES <span>3.0</span></div>
+      <div class="subtitle">Smart Agriculture Rover • Field Intelligence Command Center</div>
+    </div>
+    <div class="status"><i></i><span>ROVER ONLINE</span><small id="lastSync">SYNCING</small></div>
+  </header>
+
+  <main>
+    <section class="hero reveal holo-corners tilt-enabled">
+      <div class="hero-copy">
+        <div class="eyebrow"><span class="live-line"></span> AGRICULTURAL DECISION SUPPORT</div>
+        <h1>Read the field.<br><em>Understand the soil.</em></h1>
+        <p class="muted">Live rover telemetry, soil analytics and field imagery — brought together in one glass command center.</p>
+        <div class="hero-tags">
+          <span>ESP32 READY</span><span>LIVE TELEMETRY</span>
+        </div>
+        <div class="telemetry-rail"><span>FIELD NETWORK</span><b>● STABLE</b></div>
+      </div>
+      <div class="rover-hud rover-3d-hud">
+        <div class="rover-holo-core" aria-label="Soilmates holographic rover core">
+          <div class="holo-orbit orbit-one"></div>
+          <div class="holo-orbit orbit-two"></div>
+          <div class="holo-orbit orbit-three"></div>
+          <div class="holo-core-glow"></div>
+          <div class="holo-core-mark">S</div>
+          <div class="holo-core-label">ROVER CORE</div>
+        </div>
+        <div class="hud-ring"></div><div class="hud-ring r2"></div>
+        <div class="hud-corner top-left">DIGITAL TWIN <b>2.0</b></div>
+        <div class="hud-corner top-right">LIVE</div>
+        <div class="hud-corner bottom-left">LIVE TELEMETRY</div>
+        <div class="hud-corner bottom-right">ROVER CORE</div>
+        <div class="rover-3d-status"><i></i><span id="sceneStatus">DIGITAL CORE ONLINE</span></div>
+      </div>
+    </section>
+
+    <section class="gauge-grid reveal">
+      <article class="gauge-card glass-card tilt-enabled">
+        <div class="gauge-head"><div><span class="label">MOTION TELEMETRY</span><h2>Rover Speed</h2></div><span class="sensor-badge">LIVE</span></div>
+        <div class="gauge" data-type="speed">
+          <svg class="gauge-svg" viewBox="0 0 320 220" aria-label="Rover speed analog gauge">
+            <defs><linearGradient id="gaugeTrack" x1="0" x2="1"><stop offset="0" stop-color="#59615c"/><stop offset=".5" stop-color="#e8eee9"/><stop offset="1" stop-color="#59615c"/></linearGradient></defs>
+            <path class="gauge-track" d="M55 178 A105 105 0 0 1 265 178" pathLength="100"/>
+            <path id="speedProgress" class="gauge-progress" d="M55 178 A105 105 0 0 1 265 178" pathLength="100"/>
+            <g class="ticks" id="speedTicks"></g>
+            <line class="needle" id="speedNeedle" x1="160" y1="178" x2="160" y2="83"/>
+            <circle class="needle-hub" cx="160" cy="178" r="11"/>
+          </svg>
+          <div class="gauge-reading"><strong id="speedValue">--</strong><span>km/h</span></div>
+          <div class="gauge-scale"><span>0</span><span>10</span><span>20</span><span>30</span><span>40</span></div>
+        </div>
+        <div class="telemetry-foot"><span>WHEEL / GPS INPUT</span><b id="speedState">WAITING</b></div>
+      </article>
+
+      <article class="gauge-card glass-card tilt-enabled">
+        <div class="gauge-head"><div><span class="label">ENVIRONMENT TELEMETRY</span><h2>Temperature</h2></div><span class="sensor-badge">LIVE</span></div>
+        <div class="gauge" data-type="temperature">
+          <svg class="gauge-svg" viewBox="0 0 320 220" aria-label="Temperature analog gauge">
+            <path class="gauge-track" d="M55 178 A105 105 0 0 1 265 178" pathLength="100"/>
+            <path id="tempProgress" class="gauge-progress temp-progress" d="M55 178 A105 105 0 0 1 265 178" pathLength="100"/>
+            <g class="ticks" id="tempTicks"></g>
+            <line class="needle temp-needle" id="tempNeedle" x1="160" y1="178" x2="160" y2="83"/>
+            <circle class="needle-hub" cx="160" cy="178" r="11"/>
+          </svg>
+          <div class="gauge-reading"><strong id="tempGaugeValue">--</strong><span>°C</span></div>
+          <div class="gauge-scale"><span>0</span><span>20</span><span>40</span><span>60</span><span>80</span></div>
+        </div>
+        <div class="telemetry-foot"><span>DHT / ENVIRONMENT SENSOR</span><b id="tempState">WAITING</b></div>
+      </article>
+    </section>
+
+    <section class="cards reveal">
+      <div class="card glass-card tilt-enabled"><div class="card-icon">💧</div><span>SOIL MOISTURE</span><strong id="moisture">--%</strong><div class="mini-line"><i id="moistureBar"></i></div></div>
+      <div class="card glass-card tilt-enabled"><div class="card-icon">◌</div><span>AIR HUMIDITY</span><strong id="humidity">--%</strong><div class="mini-line"><i id="humidityBar"></i></div></div>
+      <div class="card glass-card tilt-enabled"><div class="card-icon">⚡</div><span>BATTERY</span><strong id="battery">--%</strong><div class="mini-line"><i id="batteryBar"></i></div></div>
+      <div class="card glass-card tilt-enabled"><div class="card-icon">🚜</div><span>ROVER SPEED</span><strong id="speedCard">--</strong><small>km/h</small><div class="mini-line"><i id="speedBar"></i></div></div>
+    </section>
+
+    <section class="npk-panel glass-card reveal tilt-enabled">
+      <div class="panel-head">
+        <div><span class="label">SOIL CHEMISTRY</span><h2>NPK Nutrient Intelligence</h2></div>
+        <span class="pill">LIVE SENSOR LEVELS</span>
+      </div>
+      <div class="npk-grid">
+        <div class="nutrient"><div class="nutrient-top"><span class="n-dot">N</span><div><b>Nitrogen</b><small>Growth / leaf development</small></div><strong id="nitrogenValue">--%</strong></div><div class="bar"><i id="nitrogenBar"></i></div></div>
+        <div class="nutrient"><div class="nutrient-top"><span class="p-dot">P</span><div><b>Phosphorus</b><small>Roots / energy transfer</small></div><strong id="phosphorusValue">--%</strong></div><div class="bar"><i id="phosphorusBar"></i></div></div>
+        <div class="nutrient"><div class="nutrient-top"><span class="k-dot">K</span><div><b>Potassium</b><small>Strength / water regulation</small></div><strong id="potassiumValue">--%</strong></div><div class="bar"><i id="potassiumBar"></i></div></div>
+      </div>
+    </section>
+
+    <section class="recommendation reveal tilt-enabled" id="recommendation">
+      <div class="rec-icon" id="recIcon">🌱</div>
+      <div><div class="label">CURRENT SOIL STAGE</div><h2 id="stage">Waiting for rover data</h2><p id="advice">Send a soil-moisture reading to generate an agriculture recommendation.</p></div>
+      <div class="rec-scan"></div>
+    </section>
+
+    <section class="panel glass-card reveal tilt-enabled">
+      <div class="panel-head"><div><span class="label">MOISTURE TREND</span><h2>Time → Soil Moisture</h2></div><span class="pill">LAST 50 READINGS</span></div>
+      <div class="chart-wrap"><canvas id="moistureChart"></canvas></div>
+    </section>
+
+    <section class="grid2 reveal">
+      <section class="panel glass-card tilt-enabled"><div class="panel-head"><div><span class="label">LATEST FIELD PHOTO</span><h2>Rover Camera</h2></div><span class="pill">VISION FEED</span></div><div id="photoBox" class="photo-box">No photo received yet.</div></section>
+      <section class="panel glass-card tilt-enabled"><div class="panel-head"><div><span class="label">MANUAL INGEST</span><h2>Field Image</h2></div></div>
+        <form id="uploadForm"><input type="file" id="photoInput" name="photo" accept="image/*" required><button type="submit">Upload Field Image</button></form>
+        <div id="uploadMessage" class="upload-message"></div>
+        <div class="upload-note">Images are stored by the Soilmates backend for the latest rover observation.</div>
+      </section>
+    </section>
+
+    <section class="panel glass-card reveal tilt-enabled">
+      <div class="panel-head"><div><span class="label">RECENT TELEMETRY</span><h2>Rover Readings</h2></div><span class="pill">LIVE LOG</span></div>
+      <div class="table-wrap"><table><thead><tr><th>Time</th><th>Speed</th><th>Moisture</th><th>Temp</th><th>NPK</th><th>Battery</th><th>Location</th></tr></thead><tbody id="readingsBody"><tr><td colspan="7">No readings yet.</td></tr></tbody></table></div>
+    </section>
+  </main>
+
+  <footer>SOILMATES 4.0 • NEXT-GEN DIGITAL TWIN • Smart Agriculture Rover Prototype</footer>
+  <script src="app.js"></script>
+</body>
+</html>

@@ -1,0 +1,13 @@
+{
+  "name": "soilmates-4.0-nextgen",
+  "version": "4.0.0",
+  "description": "Soilmates next-gen 3D smart agriculture rover dashboard",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "dependencies": {
+    "express": "^4.21.2",
+    "multer": "^2.0.2"
+  }
+}
